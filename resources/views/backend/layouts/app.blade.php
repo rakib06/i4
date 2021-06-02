@@ -8,7 +8,9 @@
     <meta name="description" content="@yield('meta_description', appName())">
     <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
     @yield('meta')
-
+    <script src="//code.jquery.com/jquery.js"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     @stack('before-styles')
     <link href="{{ mix('css/backend.css') }}" rel="stylesheet">
     <livewire:styles />
@@ -43,5 +45,6 @@
     <script src="{{ mix('js/backend.js') }}"></script>
     <livewire:scripts />
     @stack('after-scripts')
+    
 </body>
 </html>

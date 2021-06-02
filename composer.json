@@ -12,6 +12,7 @@
         "php": "^7.4|^8.0",
         "arcanedev/log-viewer": "8.x",
         "darkghosthunter/laraguard": "^3.0",
+        "doctrine/dbal": "^3.1",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -27,7 +28,8 @@
         "rappasoft/lockout": "^3.0",
         "spatie/laravel-activitylog": "^3.14",
         "spatie/laravel-permission": "^3.11",
-        "tabuna/breadcrumbs": "^2.2"
+        "tabuna/breadcrumbs": "^2.2",
+        "yajra/laravel-datatables-oracle": "^9.18"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
