@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Backend;
-
+use App\Models\Customer;
 use App\Models\Job;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\TableComponent;
@@ -63,9 +63,21 @@ class JobsTable extends TableComponent
             Column::make(__('ID'), 'id')
                 ->sortable(),
             Column::make(__('Name'), 'name')
-                ->searchable()
+                //->searchable()
                 ->sortable(),
                 Column::make(__('Place'), 'place_name')
+                //->searchable()
+                ->sortable(),
+                Column::make(__('Type'), 'type')
+                ->searchable()
+                ->sortable(),
+                Column::make(__('Customer'),'name')
+                //->searchable()
+                ->sortable(),
+                Column::make(__('Customer Reference'),'customer_reference')
+                ->searchable()
+                ->sortable(),
+                Column::make(__('ETA'),'expected_eta')
                 ->searchable()
                 ->sortable(),
             

@@ -13,11 +13,15 @@ Route::get('dashboard', [DashboardController::class, 'index'])
         $trail->push(__('Home'), route('admin.dashboard'));
     });
 
-
-    Route::get('jobs/list', [JobController::class, 'index']);
+    //dd("Hi");
+    // Route::get('jobs/list', 'JobController@list')
+    // ->name('jobs.list');
+    Route::get('jobs/list', [JobController::class, 'list'])
+    ->name('jobs.list');
     Route::get('jobs/new', [JobController::class, 'new'])
     ->name('jobs.new');
-
+    Route::get('jobs/new/{id}', [JobController::class, 'addProduct'], ['id'=> $id] )
+    ->name('jobs.addProduct');
     Route::post('jobs/store', [JobController::class, 'store'])
     ->name('jobs.store')
     ->breadcrumbs(function (Trail $trail) {

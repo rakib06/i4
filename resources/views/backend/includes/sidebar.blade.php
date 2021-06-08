@@ -17,6 +17,121 @@
                 icon="c-sidebar-nav-icon cil-speedometer"
                 :text="__('Dashboard')" />
         </li>
+        <!-- Start of Job  -->
+        @if (
+            $logged_in_user->hasAllAccess() ||
+            (
+                $logged_in_user->can('admin.access.user.list') ||
+                $logged_in_user->can('admin.access.user.deactivate') ||
+                $logged_in_user->can('admin.access.user.reactivate') ||
+                $logged_in_user->can('admin.access.user.clear-session') ||
+                $logged_in_user->can('admin.access.user.impersonate') ||
+                $logged_in_user->can('admin.access.user.change-password')
+            )
+        )
+            <!-- <li class="c-sidebar-nav-title">@lang('System')</li> -->
+
+            <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('admin.auth.user.*') || Route::is('admin.auth.role.*'), 'c-open c-show') }}">
+                <x-utils.link
+                    href="#"
+                    icon="c-sidebar-nav-icon cil-briefcase"
+                    class="c-sidebar-nav-dropdown-toggle"
+                    :text="__('Jobs')" />
+
+                <ul class="c-sidebar-nav-dropdown-items ml-4">
+                    @if (
+                        $logged_in_user->hasAllAccess() ||
+                        (
+                            $logged_in_user->can('admin.access.user.list') ||
+                            $logged_in_user->can('admin.access.user.deactivate') ||
+                            $logged_in_user->can('admin.access.user.reactivate') ||
+                            $logged_in_user->can('admin.access.user.clear-session') ||
+                            $logged_in_user->can('admin.access.user.impersonate') ||
+                            $logged_in_user->can('admin.access.user.change-password')
+                        )
+                    )
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.jobs.list')"
+                                class="c-sidebar-nav-link"
+                                icon="c-sidebar-nav-icon cil-list"
+                                :text="__('List')"
+                                :active="activeClass(Route::is('admin.auth.jobs.*'), 'c-active')" />
+                        </li>
+                    @endif
+
+                    @if ($logged_in_user->hasAllAccess())
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.jobs.new')"
+                                class="c-sidebar-nav-link"
+                                icon="c-sidebar-nav-icon cil-plus"
+                                :text="__('New')"
+                                :active="activeClass(Route::is('admin.auth.jobs.*'), )" />
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        @endif
+        <!-- End of job create  -->
+
+<!-- Start of Registries  -->
+@if (
+            $logged_in_user->hasAllAccess() ||
+            (
+                $logged_in_user->can('admin.access.user.list') ||
+                $logged_in_user->can('admin.access.user.deactivate') ||
+                $logged_in_user->can('admin.access.user.reactivate') ||
+                $logged_in_user->can('admin.access.user.clear-session') ||
+                $logged_in_user->can('admin.access.user.impersonate') ||
+                $logged_in_user->can('admin.access.user.change-password')
+            )
+        )
+            <!-- <li class="c-sidebar-nav-title">@lang('System')</li> -->
+
+            <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('admin.auth.user.*') || Route::is('admin.auth.role.*'), 'c-open c-show') }}">
+                <x-utils.link
+                    href="#"
+                    icon="c-sidebar-nav-icon cil-columns"
+                    class="c-sidebar-nav-dropdown-toggle"
+                    :text="__('Registries')" />
+
+                <ul class="c-sidebar-nav-dropdown-items ml-4">
+                    @if (
+                        $logged_in_user->hasAllAccess() ||
+                        (
+                            $logged_in_user->can('admin.access.user.list') ||
+                            $logged_in_user->can('admin.access.user.deactivate') ||
+                            $logged_in_user->can('admin.access.user.reactivate') ||
+                            $logged_in_user->can('admin.access.user.clear-session') ||
+                            $logged_in_user->can('admin.access.user.impersonate') ||
+                            $logged_in_user->can('admin.access.user.change-password')
+                        )
+                    )
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.jobs.list')"
+                                class="c-sidebar-nav-link"
+                                icon="c-sidebar-nav-icon cil-sun"
+                                :text="__('Branches')"
+                                :active="activeClass(Route::is('admin.auth.jobs.*'), 'c-active')" />
+                        </li>
+                    @endif
+
+                    @if ($logged_in_user->hasAllAccess())
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.jobs.new')"
+                                class="c-sidebar-nav-link"
+                                icon="c-sidebar-nav-icon cil-sun"
+                                :text="__('Customers')"
+                                :active="activeClass(Route::is('admin.auth.jobs.*'), )" />
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        @endif
+        <!-- End of Registries  -->
 
         @if (
             $logged_in_user->hasAllAccess() ||
@@ -71,6 +186,9 @@
                 </ul>
             </li>
         @endif
+
+
+
 
         @if ($logged_in_user->hasAllAccess())
             <li class="c-sidebar-nav-dropdown">
