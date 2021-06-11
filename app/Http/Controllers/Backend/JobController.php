@@ -71,10 +71,19 @@ class JobController
             $job->save();
             //dd($job);
             // redirect            
-            return \Redirect::to('admin/jobs/new/',$job->id)->with( [ 'job' => $job->id ] );
+            //return \Redirect::to('admin/jobs/new/')->with( [ 'job' => $job->id ] );
+            return \Redirect::to('admin/jobs/new/'.$job->id)->with( [ 'job' => $job->id ]) ;
         }
     }
     public function addProduct($id)
+    {
+        $customers = Customer::all();
+        $places = Place::all();
+        $vessles = Vessel::all();
+        $branches = Branch::all();
+        return view('backend.job.addProduct', compact(["customers", "id", "places", "vessles", "branches"]));
+    }
+    public function add(Request $request)
     {
         $customers = Customer::all();
         $places = Place::all();

@@ -18,6 +18,7 @@
             </x-slot>
 
             <x-slot name="headerActions">
+            <!-- {{$id}} -->
                 <x-utils.link class="card-header-action" :href="route('admin.auth.user.index')" :text="__('Cancel')" />
             </x-slot>
             
@@ -27,12 +28,14 @@
 
                     <div class="col-md-3">  
                     <div class="form-group">
-                        <label style="font-size: x-small; font-weight:bold; " for="exampleFormControlInput1" >Product</label>
+                        <label style="font-size: x-small; font-weight:bold; " for="exampleFormControlInput1" >Product </label>
                         <select name="customer_id" id="product" class="form-control" required>
                             <option value="">Select Product </option>
+                            <option value="Product 1">Product 1 </option>
+                            <option value="Product 2">Product 2 </option>
                             @foreach($customers as $customer)
                                 <!-- <option value="{{$customer->id}}">{{$customer->name}}</option> -->
-                                <option value="{{$customer->name}}">{{$customer->name}}</option>
+                                <!-- <option value="{{$customer->name}}">{{$customer->name}}</option> -->
                             @endforeach
                         </select>
                     </div>
@@ -67,7 +70,7 @@
     </div>
 
     <!--Section 2-->
-    <x-forms.post :action="route('admin.jobs.store')">
+    <x-forms.post :action="route('admin.jobs.add')">
     <x-backend.card>
             <x-slot name="header">
                 @lang('Goods quantity')

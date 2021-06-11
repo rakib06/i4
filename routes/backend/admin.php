@@ -20,14 +20,18 @@ Route::get('dashboard', [DashboardController::class, 'index'])
     ->name('jobs.list');
     Route::get('jobs/new', [JobController::class, 'new'])
     ->name('jobs.new');
-    Route::get('jobs/new/{id}', [JobController::class, 'addProduct'], ['id'=> $id] )
+    Route::get('jobs/new/{id}', [JobController::class, 'addProduct'] )
     ->name('jobs.addProduct');
     Route::post('jobs/store', [JobController::class, 'store'])
     ->name('jobs.store')
     ->breadcrumbs(function (Trail $trail) {
         $trail->push(__('Job'), route('jobs.store'));
     });
-
+    Route::post('jobs/product', [JobController::class, 'add'])
+    ->name('jobs.add')
+    ->breadcrumbs(function (Trail $trail) {
+        $trail->push(__('Product'), route('jobs.add'));
+    });;
     Route::get('dtable-posts-lists', [AjaxCrudController::class, 'index']);
     Route::get('dtable-custom-posts', [AjaxCrudController::class, 'get_custom_posts']);
     
