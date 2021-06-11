@@ -89,6 +89,8 @@ class JobController
         $places = Place::all();
         $vessles = Vessel::all();
         $branches = Branch::all();
+
+        $id = Job::latest()->first();
         return view('backend.job.addProduct', compact(["customers", "id", "places", "vessles", "branches"]));
     }
 }
