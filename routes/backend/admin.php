@@ -20,8 +20,17 @@ Route::get('dashboard', [DashboardController::class, 'index'])
     ->name('jobs.list');
     Route::get('jobs/new', [JobController::class, 'new'])
     ->name('jobs.new');
+    Route::get('jobs/edit/{id}', [JobController::class, 'edit'] )
+    ->name('jobs.edit');
+
     Route::get('jobs/new/{id}', [JobController::class, 'addProduct'] )
     ->name('jobs.addProduct');
+
+    Route::get('jobs/email/get/{id}', [JobController::class, 'getJobEmail'] )
+    ->name('jobs.getJobEmail');
+    Route::post('jobs/email/new/{id}', [JobController::class, 'newJobEmail'] )
+    ->name('jobs.newJobEmail');
+
     Route::post('jobs/store', [JobController::class, 'store'])
     ->name('jobs.store')
     ->breadcrumbs(function (Trail $trail) {
